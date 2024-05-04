@@ -1,0 +1,14 @@
+{% extends 'blogs/base.html' %}
+
+{% block pageHeader %}
+    <h2>{{ article.name }}</h2>
+    <p>{{ article.dateAdded }}</p>
+{% endblock pageHeader %}
+
+{% block content %}
+    <div>
+        <p>{{ article.content|linebreaks }}</p>
+    </div>
+
+    <a href="{% url 'blogs:editArticle' article.id %}" class="btn btn-primary mb-4" role="button">Edit Article</a>    
+{% endblock content %}

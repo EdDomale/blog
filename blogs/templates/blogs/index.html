@@ -1,0 +1,22 @@
+{% extends 'blogs/base.html' %}
+
+{% block pageHeader%}
+    <h2>Blogs</h2>
+{% endblock pageHeader %}
+
+{% block content %}
+    {% for blog in blogs %}
+        <div class="card my-3">
+            <div class="card-header">
+                {{ blog.owner }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ blog.name }}</h5>
+                <p class="card-text">{{ blog.description | linebreaks }}</p>
+                <a href="{% url 'blogs:articles' blog.id %}" class="btn btn-primary stretched-link">Read Articles</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>No blogs available.</p>
+    {% endfor %}
+{% endblock content %}
